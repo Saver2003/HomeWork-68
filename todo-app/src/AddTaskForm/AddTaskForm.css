@@ -1,0 +1,14 @@
+.AddTaskInput {
+
+    width: 500px;
+    margin-right: 5px;
+}
+
+.btn {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+p {
+    display: inline-block;
+}
