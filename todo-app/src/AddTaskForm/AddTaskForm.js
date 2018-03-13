@@ -5,14 +5,16 @@ import {connect} from 'react-redux';
 import {changeText, saveTask} from "../toDoStore/actions";
 
 const AddTaskForm = props => {
-    return (
-        <div className="AddTaskForm">
-            <p key={props.text.id}><input className="AddTaskInput" type="text"
-                      value={props.text} onChange={props.changeText}
-                      placeholder="Add Task"/></p>
-            <button className="btn" onClick={props.saveTask}>Add task</button>
-        </div>
-    );
+  return (
+    <div className="AddTaskForm">
+      <p key={props.text.id}>
+        <input className="AddTaskInput" type="text"
+               value={props.text} onChange={props.changeText}
+               placeholder="Add Task"/>
+      </p>
+      <button className="btn" onClick={props.saveTask}>Add task</button>
+    </div>
+  );
 };
 
 const mapStateToProps = state => {

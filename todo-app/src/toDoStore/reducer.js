@@ -11,9 +11,7 @@ const initialState = {
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SAVE_TASK:
-      return {text: state.text};
-    case DELETE_TASK:
-      return {text: state.text};
+      return {...state, text: state.text};
     case FETCH_TASK_REQUEST:
       return {...state, loading: true};
     case FETCH_TASK_SUCCESS:

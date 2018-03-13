@@ -11,14 +11,9 @@ class Tasks extends Component {
   }
   
   render() {
-    // console.log(this.props);
     return (
       <div className="Tasks">
         <Task/>
-        
-        {/*{this.props.tasks.map((task) => {*/}
-          {/*return <Task text={task.text} key={task.id} id={task.id} remove={this.props.remove}/>*/}
-        {/*})}*/}
       </div>
     )
   }

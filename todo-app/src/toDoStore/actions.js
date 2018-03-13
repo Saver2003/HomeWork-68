@@ -10,9 +10,10 @@ export const CHANGE_TEXT = 'CHANGE_TEXT';
 export const saveTask = () => {
   return (dispatch, getState) => {
     dispatch(fetchTaskRequest());
-    axios.post('/todo.json', {text: getState.text, id: getState.id}).then(response => {
+    axios.post('/todo.json', {text: getState().text}).then(response => {
+      console.log(response);
       console.log(response.data);
-      dispatch(fetchTaskSuccess(response.data))
+      dispatch(fetchTask())
     })
   }
 };
@@ -20,8 +21,14 @@ export const changeText = (value) => {
   return{type: CHANGE_TEXT, value}
 };
 
-export const deleteTask = () => {
-  return {type: DELETE_TASK}
+export const deleteTask = (id) => {
+  console.log(id)
+  return (dispatch) => {
+    dispatch(fetchTaskRequest());
+    axios.delete(`/todo/${id}.json`).then(() => {
+      dispatch(fetchTask());
+    })
+  }
 };
 
 export const fetchTaskRequest = () => {
@@ -41,7 +48,6 @@ export const fetchTask = () => {
     dispatch(fetchTaskRequest());
     
     axios.get('/todo.json').then(response => {
-      // console.log(response.data)
       dispatch(fetchTaskSuccess(response.data))
     }, error => {
       dispatch(fetchTaskError())

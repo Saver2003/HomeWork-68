@@ -9,7 +9,6 @@ export const FETCH_COUNTER_SUCCESS = 'FETCH_COUNTER_SUCCESS';
 export const FETCH_COUNTER_ERROR = 'FETCH_COUNTER_ERROR';
 export const FETCH_COUNTER_LOAD = 'FETCH_COUNTER_LOAD';
 
-
 export const increaseCounter = () => {
   return (dispatch, getState) => {
     dispatch(fetchCounterRequest());

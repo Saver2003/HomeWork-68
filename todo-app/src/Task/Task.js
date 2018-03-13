@@ -1,24 +1,28 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './Task.css';
 import trash from '../Pic/trash.png';
 
 import {connect} from 'react-redux';
 import {deleteTask} from "../toDoStore/actions";
 
-const Task = props => {
+class Task extends Component {
+  
+  
   // console.log(props)
-  return(
-    Object.keys(props.tasks).map(task => {
-      return (
-        <div className="Task">{props.tasks[task].text}
-          <img src={trash} alt="" onClick={props.deleteTask}/>
-        </div>
-      )
-    })
-  )
+  render() {
+    return (
+      Object.keys(this.props.tasks).map(task => {
+        return (
+          <div className="Task" key={task}>{this.props.tasks[task].text}
+            <img src={trash} alt="" onClick={() => this.props.deleteTask(task)}/>
+          </div>
+        )
+      })
+    )
+  }
   
     
-};
+}
 
 const mapStateToProps = state => {
   return {
@@ -29,7 +33,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    deleteTask: () => dispatch(deleteTask())
+    deleteTask: (id) => dispatch(deleteTask(id))
   }
 };
 
